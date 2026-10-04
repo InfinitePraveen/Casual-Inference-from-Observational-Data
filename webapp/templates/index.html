@@ -1,0 +1,69 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <main class="container">
+        <section class="hero">
+            <p class="eyebrow">CAUSAL MACHINE LEARNING • PORTFOLIO DEMO</p>
+            <h1>{{ title }}</h1>
+            <p class="lead">{{ question }}</p>
+            <div class="links">
+                <a href="{{ notebook }}" target="_blank">View Notebook</a>
+                <a href="{{ github }}" target="_blank">GitHub</a>
+                <a href="{{ linkedin }}" target="_blank">LinkedIn</a>
+            </div>
+        </section>
+
+        <section class="grid">
+            <article class="card">
+                <h2>Dataset</h2>
+                <p>{{ dataset }}</p>
+                <p class="muted">Small enough for CPU-only experimentation and downloaded by the notebook with requests.</p>
+            </article>
+
+            <article class="card">
+                <h2>Methods</h2>
+                <ul>
+                    {% for method in methods %}
+                    <li>{{ method }}</li>
+                    {% endfor %}
+                </ul>
+            </article>
+        </section>
+
+        <section class="card">
+            <h2>How the workflow works</h2>
+            <div class="pipeline">
+                <span>Observational Data</span><b>→</b>
+                <span>Causal Question</span><b>→</b>
+                <span>Propensity Scores</span><b>→</b>
+                <span>DoWhy</span><b>→</b>
+                <span>ATE</span>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>Causal assumptions</h2>
+            <ul>
+                {% for assumption in assumptions %}
+                <li>{{ assumption }}</li>
+                {% endfor %}
+            </ul>
+            <div class="note">
+                <strong>Important:</strong> An observational estimate is not automatically causal.
+                The interpretation depends on the assumptions above and the robustness checks in the notebook.
+            </div>
+        </section>
+
+        <footer>
+            <p>Built by <strong>Praveen Kumar</strong> • Data Science / Causal ML portfolio project</p>
+        </footer>
+    </main>
+</body>
+</html>
